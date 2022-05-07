@@ -38,9 +38,9 @@
     <link href="http://example.com/2022/05/07/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/"/>
     <id>http://example.com/2022/05/07/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</id>
     <published>2022-05-07T08:00:00.000Z</published>
-    <updated>2022-05-07T13:09:35.229Z</updated>
+    <updated>2022-05-07T13:20:59.626Z</updated>
     
-    <content type="html"><![CDATA[<p>有个图床真的舒服，随时随地爽</p><p>看了看别人的博客，感觉Twikoo和Valine都挺好看的 打算干脆直接搞个双评论系统)</p><h2>先配置下Valine吧</h2>首先打开LeanCloud官网 <a>https://console.leancloud.app/#/app</a> 选择国际版<p>注册后完善下信息 选择创建应用<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220507210426.png"></p><p>打开创建的应用 进行一些简单的配置</p>]]></content>
+    <content type="html"><![CDATA[<p>有个图床真的舒服，随时随地爽</p><p>看了看别人的博客，感觉Twikoo和Valine都挺好看的 打算干脆直接搞个双评论系统)</p><h2>先配置下Valine吧</h2>首先打开LeanCloud官网 <a>https://console.leancloud.app/#/app</a> 选择国际版<p>注册后完善下信息 选择创建应用<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220507210426.png"></p><p>打开创建的应用 进行一些简单的配置</p><p>在设置的应用凭证里获取AppID Appkey等信息，写到_config.yml文件里<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220507211945.png"></p><p>重新启动，发现评论区有了</p>]]></content>
     
     
     <summary type="html">评论系统搭建过程</summary>
