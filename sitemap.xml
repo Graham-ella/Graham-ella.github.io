@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://graham-ella.github.io/2022/05/12/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-12/</loc>
+    <loc>https://graham-ella.github.io/2022/05/13/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-13/</loc>
     
     <lastmod>2022-05-13</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://graham-ella.github.io/2022/05/13/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-13/</loc>
+    <loc>https://graham-ella.github.io/2022/05/12/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-12/</loc>
     
     <lastmod>2022-05-13</lastmod>
     
@@ -113,15 +113,6 @@
     <loc>https://graham-ella.github.io/2022/05/07/butterfly%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/butterfly%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2022-05-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://graham-ella.github.io/2022/05/05/hello-world/</loc>
-    
-    <lastmod>2022-05-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
