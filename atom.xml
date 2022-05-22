@@ -6,7 +6,7 @@
   <link href="https://graham-ella.github.io/atom.xml" rel="self"/>
   
   <link href="https://graham-ella.github.io/"/>
-  <updated>2022-05-13T13:56:25.901Z</updated>
+  <updated>2022-05-22T03:55:23.174Z</updated>
   <id>https://graham-ella.github.io/</id>
   
   <author>
@@ -17,18 +17,19 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2022-05-13</title>
-    <link href="https://graham-ella.github.io/2022/05/13/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-13/"/>
-    <id>https://graham-ella.github.io/2022/05/13/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-13/</id>
-    <published>2022-05-13T08:00:00.000Z</published>
-    <updated>2022-05-13T13:56:25.901Z</updated>
+    <title>2022-05-22</title>
+    <link href="https://graham-ella.github.io/2022/05/22/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-22/"/>
+    <id>https://graham-ella.github.io/2022/05/22/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-22/</id>
+    <published>2022-05-22T08:00:00.000Z</published>
+    <updated>2022-05-22T03:55:23.174Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>今天起得巨早，8点就醒了，起来随便塞了点东西吃吃就去看编译原理了，这课简直绝了，真的感觉要挂科），看到语法制导翻译了，<br>感觉要来不及看了）— 唉</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>下午 emmmm 看了会甘辉城乐园，京阿尼的画风还是很好看的呀，然后就到了亲爱的源老师课堂，哈哈，写个板书他竟然卡壳了，笑死我了，<br>建议下次还是老老实实念PPT吧，啊这，原来课结束了，没有下次了，好哎！！！！！</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>翘掉了实验课去打了会儿球，平板和充电器都先放回宿舍了，只能在自习室歇会儿，补补之前没写的博客了）</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h2><p>昨天终于考完了编译原理和数据库，哎，感觉数据库肯定是过了，但是编译原理好像要挂了）</p><p>编译原理感觉这门课我自己都还没入门</p><p>为啥还是没有实习 —- 寄</p><p>看到个最近距离的题目 准备收录一波</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;早上&quot;&gt;&lt;a href=&quot;#早上&quot; class=&quot;headerlink&quot; title=&quot;早上&quot;&gt;&lt;/a&gt;早上&lt;/h2&gt;&lt;p&gt;今天起得巨早，8点就醒了，起来随便塞了点东西吃吃就去看编译原理了，这课简直绝了，真的感觉要挂科），看到语法制导翻译了，&lt;br&gt;感觉要来不及看</summary>
+    <summary type="html">&lt;h2 id=&quot;最近&quot;&gt;&lt;a href=&quot;#最近&quot; class=&quot;headerlink&quot; title=&quot;最近&quot;&gt;&lt;/a&gt;最近&lt;/h2&gt;&lt;p&gt;昨天终于考完了编译原理和数据库，哎，感觉数据库肯定是过了，但是编译原理好像要挂了）&lt;/p&gt;
+&lt;p&gt;编译原理感觉这门课我自己都还没入门&lt;/p&gt;</summary>
       
     
     
@@ -61,6 +62,30 @@
     
     
     <category term="暑期实习 笔试" scheme="https://graham-ella.github.io/tags/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022-05-13</title>
+    <link href="https://graham-ella.github.io/2022/05/13/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-13/"/>
+    <id>https://graham-ella.github.io/2022/05/13/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-13/</id>
+    <published>2022-05-13T08:00:00.000Z</published>
+    <updated>2022-05-13T13:56:25.901Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>今天起得巨早，8点就醒了，起来随便塞了点东西吃吃就去看编译原理了，这课简直绝了，真的感觉要挂科），看到语法制导翻译了，<br>感觉要来不及看了）— 唉</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>下午 emmmm 看了会甘辉城乐园，京阿尼的画风还是很好看的呀，然后就到了亲爱的源老师课堂，哈哈，写个板书他竟然卡壳了，笑死我了，<br>建议下次还是老老实实念PPT吧，啊这，原来课结束了，没有下次了，好哎！！！！！</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>翘掉了实验课去打了会儿球，平板和充电器都先放回宿舍了，只能在自习室歇会儿，补补之前没写的博客了）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;早上&quot;&gt;&lt;a href=&quot;#早上&quot; class=&quot;headerlink&quot; title=&quot;早上&quot;&gt;&lt;/a&gt;早上&lt;/h2&gt;&lt;p&gt;今天起得巨早，8点就醒了，起来随便塞了点东西吃吃就去看编译原理了，这课简直绝了，真的感觉要挂科），看到语法制导翻译了，&lt;br&gt;感觉要来不及看</summary>
+      
+    
+    
+    
+    <category term="每日一水" scheme="https://graham-ella.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/"/>
+    
+    
+    <category term="日记" scheme="https://graham-ella.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
@@ -190,8 +215,8 @@
   
   <entry>
     <title>2022-05-09</title>
-    <link href="https://graham-ella.github.io/2022/05/09/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-09-md/"/>
-    <id>https://graham-ella.github.io/2022/05/09/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-09-md/</id>
+    <link href="https://graham-ella.github.io/2022/05/09/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-09/"/>
+    <id>https://graham-ella.github.io/2022/05/09/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-09/</id>
     <published>2022-05-09T15:17:46.000Z</published>
     <updated>2022-05-10T15:00:45.895Z</updated>
     
