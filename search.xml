@@ -4,9 +4,59 @@
   
     
     <entry>
+      <title>22-06-24</title>
+      <link href="/2022/06/24/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-24/"/>
+      <url>/2022/06/24/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-24/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第二章-ip协议详解"><a href="#第二章-ip协议详解" class="headerlink" title="第二章 ip协议详解"></a>第二章 ip协议详解</h2><h3 id="2-1-IP服务的特点"><a href="#2-1-IP服务的特点" class="headerlink" title="2.1 IP服务的特点"></a>2.1 IP服务的特点</h3><ul><li>IP协议是无状态的，通信双方不长久的维护双方的信息</li><li>不可靠: 不能保证IP数据包可以准确的到达接收端，中转路由器和接收端都有可能因为某些原因抛弃数据包，然后返回ICMP错误消息</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux高性能服务器阅读 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 阅读 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>0623题目</title>
+      <link href="/2022/06/23/acw%E9%A2%98%E7%9B%AE/0623%E9%A2%98%E7%9B%AE/"/>
+      <url>/2022/06/23/acw%E9%A2%98%E7%9B%AE/0623%E9%A2%98%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="峰会"><a href="#峰会" class="headerlink" title="峰会"></a>峰会</h2><p>由于数据范围比较小，所以可以直接暴力求解，时间复杂度是 $O(N^3)$ </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 刷题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>22-06-23</title>
-      <link href="/2022/06/23/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/22-06-23/"/>
-      <url>/2022/06/23/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/22-06-23/</url>
+      <link href="/2022/06/23/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-23/"/>
+      <url>/2022/06/23/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-23/</url>
       
         <content type="html"><![CDATA[<h2 id="1-1-tcp-x2F-ip协议族体系结构"><a href="#1-1-tcp-x2F-ip协议族体系结构" class="headerlink" title="1.1 tcp&#x2F;ip协议族体系结构"></a>1.1 tcp&#x2F;ip协议族体系结构</h2><h3 id="1-1-1-数据链路层"><a href="#1-1-1-数据链路层" class="headerlink" title="1.1.1 数据链路层"></a>1.1.1 数据链路层</h3><p>整个体系结构就是下层为上层提供服务，要想使用数据链路层的功能就要有数据链路层里用的MAC地址，MAC地址可以通过ARP协议通过IP地址得到,<br>另外还有RARP协议,RARP就是反过来，通过MAC地址获得IP地址，主要用于无盘的机器，就是不能存储自己的IP地址，但是可以通过自己的MAC来查询</p><h3 id="1-1-2-网络层"><a href="#1-1-2-网络层" class="headerlink" title="1.1.2 网络层"></a>1.1.2 网络层</h3><p>网络层最经典的就是IP协议，IP协议其实就是封装了网络的拓扑结构，传输层上仿佛两个机器的直接通信，其实是网络层通过路由选择，一跳一跳的选择下一跳地址，<br>来将两个主机连接起来，<br>还有ICMP协议，ICMP协议借用了IP协议的服务<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623210040.png" alt="ICMP报文字段"></p><h3 id="1-1-3-传输层"><a href="#1-1-3-传输层" class="headerlink" title="1.1.3 传输层"></a>1.1.3 传输层</h3><p>传输层经典的TCP协议(传输控制协议)，TCP协议是可靠的，基于字节流传输的，发送端可以逐个向数据流里写入，接收端可以逐个读出；<br>UDP(用户数据报协议)是不可靠的，基于数据报，每个数据报都有一个长度，接收端只能以该长度读出；<br>SCTP协议(流控制传输协议)： 在因特网传输电话信号</p><h3 id="1-1-4-应用层"><a href="#1-1-4-应用层" class="headerlink" title="1.1.4 应用层"></a>1.1.4 应用层</h3><p>应用层在用户空间实现，传输层以下都是在内核空间实现，如果也在内核，可以省去来回切换的麻烦，但是导致内核庞大、实现复杂，<br>比如</p><ul><li>ping</li><li>telnet 远程登陆协议</li><li>DNS</li><li>OSPF 开放最短路径优先 动态路由更新协议</li></ul><p>可以在&#x2F;etc&#x2F;services里查看</p><h2 id="1-2-封装"><a href="#1-2-封装" class="headerlink" title="1.2 封装"></a>1.2 封装</h2><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623211424.png" alt="封装过程图"></p><p>当发送端应用程序使用send(write)向一个TCP连接写入数据时，内核中的TCP模块会将这些数据复制到与该连接对应的TCP内核发送缓冲区，然后TCP模块<br>调用IP模块提供的服务，传递的参数包括TCP头部信息和TCP发送缓冲区中的数据<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623211654.png" alt="TCP封装过程"></p><p>经过UDP封装后的数据称为UDP数据报，UDP无须为应用层数据保存副本，因为它提供的服务是不可靠的。<br>当一个UDP数据报被成功发送之后，UDP内核缓冲区中的该数据报就被丢弃了。<br>如果应用程序检测到该数据报未能被接收端正确接收，并打算重发这个数据报，则应用程序需要重新从用户空间将该数据报拷贝到UDP内核发送缓冲区中。<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623212107.png" alt="帧结构"></p><h2 id="1-3-分用"><a href="#1-3-分用" class="headerlink" title="1.3 分用"></a>1.3 分用</h2><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623214321.png" alt="分用"><br>因为IP协议、ARP协议和RARP协议都使用帧传输数据，所以帧的头部需要提供某个<br>字段（具体情况取决于帧的类型）来区分它们。以以太网帧为例，它使用2字节的类型字段<br>来标识上层协议（见图1-6）。如果主机接收到的以太网帧类型字段的值为0x800,则帧的数<br>据部分为P数据报（见图1-4），以太网驱动程序就将帧交付给IP模块：若类型字段的值为<br>0x806,则帧的数据部分为ARP请求或应答报文，以太网驱动程序就将帧交付给ARP模块：<br>若类型字段的值为0x835,则帧的数据部分为RARP请求或应答报文，以太网驱动程序就将<br>帧交付给RARP模块。</p><h2 id="1-5-arp协议工作原理"><a href="#1-5-arp协议工作原理" class="headerlink" title="1.5 arp协议工作原理"></a>1.5 arp协议工作原理</h2><p>工作原理：主机向自己所在的网络广播一个ARP请求，该请求包含目标机器的网络地址。此网络上的其它机器接收这个请求后，目标机器会响应一个APR应答，<br>包含自己的MAC地址</p><p>arp高速缓存: 存储常用的和最近使用的一些MAC和IP的关系<br>arp -a可以查询</p><h2 id="1-6-DNS工作原理"><a href="#1-6-DNS工作原理" class="headerlink" title="1.6 DNS工作原理"></a>1.6 DNS工作原理</h2><p>linux下可以利用host指令 利用dns协议和dns服务器进行通讯<br>比如:<br>host -t A <a href="http://www.baidu.com/">www.baidu.com</a> (-t表示选择哪种查询类型 A表示域名和IP的对应)<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623231514.png" alt="host指令"></p><h2 id="1-7-socket与TCP-x2F-IP协议族的关系"><a href="#1-7-socket与TCP-x2F-IP协议族的关系" class="headerlink" title="1.7 socket与TCP&#x2F;IP协议族的关系"></a>1.7 socket与TCP&#x2F;IP协议族的关系</h2><p>数据链路层、网络层、传输层都是在内核实现的，操作系统就需要提供系统调用来使得应用程序可以使用这些协议提供的服务，<br>实现这组系统调用的API主要是socket</p><p>socket主要的功能在于:</p><ul><li>将应用程序数据从用户缓冲区复制到TCP&#x2F;UDP内核发送缓冲区，用来交付内核来发送数据；将TCP&#x2F;UDP接收缓冲区中的数据复制到用户缓冲区来读取数据</li><li>应用程序通过他们可以修改这些底层协议的某些头部信息或其它数据结构，来精细的控制底层通信的行为</li></ul>]]></content>
       
@@ -29,9 +79,9 @@
     
     
     <entry>
-      <title>0620刷题</title>
-      <link href="/2022/06/20/acw%E9%A2%98%E7%9B%AE/0620%E5%88%B7%E9%A2%98/"/>
-      <url>/2022/06/20/acw%E9%A2%98%E7%9B%AE/0620%E5%88%B7%E9%A2%98/</url>
+      <title>0620题目</title>
+      <link href="/2022/06/20/acw%E9%A2%98%E7%9B%AE/0620%E9%A2%98%E7%9B%AE/"/>
+      <url>/2022/06/20/acw%E9%A2%98%E7%9B%AE/0620%E9%A2%98%E7%9B%AE/</url>
       
         <content type="html"><![CDATA[<h2 id="格斗场"><a href="#格斗场" class="headerlink" title="格斗场"></a>格斗场</h2><p>双指针算法<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/origin_img_v2_df36981b-d7a8-45b6-9311-02df2297650g.jpg" alt="题目分析"></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">200010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, k;</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="built_in">sort</span>(a, a + n);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> res = n;</span><br><span class="line">    <span class="keyword">for</span>(; i &lt; n; i++)&#123; <span class="comment">// 注意如果要在这里加入j的判断 需要 j &lt;= n</span></span><br><span class="line">        <span class="keyword">while</span>(j &lt; n &amp;&amp; a[j] - a[i] &lt;= k) j++;</span><br><span class="line">        <span class="keyword">if</span>(a[j<span class="number">-1</span>] &gt; a[i]) res--; <span class="comment">// 至少要有一个满足大于 否则不能保证成立</span></span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="有限小数"><a href="#有限小数" class="headerlink" title="有限小数"></a>有限小数</h2><p>小数的进制转化 gcd最大公约数的应用<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/origin_img_v2_a32750d5-888a-4463-ba52-443e4417fa3g.jpg" alt="题目分析"></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> T;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">gcd</span><span class="params">(LL a, LL b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b?<span class="built_in">gcd</span>(b, a % b):a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        LL p, q, b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>, &amp;p, &amp;q, &amp;b);</span><br><span class="line">        LL d = <span class="built_in">gcd</span>(p, q);</span><br><span class="line">        q /= d;</span><br><span class="line">        <span class="keyword">while</span>(q &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            d = <span class="built_in">gcd</span>(q, b);</span><br><span class="line">            <span class="keyword">if</span>(d == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">while</span>(q % d == <span class="number">0</span>) q /= d; <span class="comment">// 每次除d除干净</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(q == <span class="number">1</span>) cout &lt;&lt; <span class="string">&quot;YES&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;NO&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>好多天没更新博客了，刷完题赶紧过来更新一下，不然感觉以后会越来越鸽</p>]]></content>
       
@@ -229,31 +279,6 @@
     
     
     <entry>
-      <title>2022-05-11</title>
-      <link href="/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/"/>
-      <url>/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/</url>
-      
-        <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>8:30左右醒来，昨晚三点多才睡（热爆了），半夜下床找风扇结果还没找着，又灰溜溜的回床睡了，貌似是时间已经够晚了，<br>后来也成功入睡了</p><p>可怕）想起了去年暑假的悲惨时光</p><p>早上看了会儿？emmmm 好家伙 好像早上没看啥 看了会儿C++的东西 然后睡了会儿 实在太困了</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>和架构师请了个假，毕竟下午有4399的面试</p><p>感觉4399的面试 emmmm 发挥还算可以的样子 应该不会被挂吧） 唉</p><p>面完了4：20左右，结果接到电话？ 招商银行的电话？？？ —- 发现自己记错面试时间了</p><p>5：30 粗略的面完了招商银行 唉） 感觉特定挂了 问了好多Java的东西 我直接人麻了</p><p>问了不少 springboot的 东西 直接废了</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>先写个博客</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 每日一水 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>4399和招商银行</title>
       <link href="/2022/05/11/2022%E6%9A%91%E6%9C%9F%E9%9D%A2%E8%AF%95/4399%E5%92%8C%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/"/>
       <url>/2022/05/11/2022%E6%9A%91%E6%9C%9F%E9%9D%A2%E8%AF%95/4399%E5%92%8C%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/</url>
@@ -271,6 +296,31 @@
         <tags>
             
             <tag> 暑期实习 面试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2022-05-11</title>
+      <link href="/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/"/>
+      <url>/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/</url>
+      
+        <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>8:30左右醒来，昨晚三点多才睡（热爆了），半夜下床找风扇结果还没找着，又灰溜溜的回床睡了，貌似是时间已经够晚了，<br>后来也成功入睡了</p><p>可怕）想起了去年暑假的悲惨时光</p><p>早上看了会儿？emmmm 好家伙 好像早上没看啥 看了会儿C++的东西 然后睡了会儿 实在太困了</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>和架构师请了个假，毕竟下午有4399的面试</p><p>感觉4399的面试 emmmm 发挥还算可以的样子 应该不会被挂吧） 唉</p><p>面完了4：20左右，结果接到电话？ 招商银行的电话？？？ —- 发现自己记错面试时间了</p><p>5：30 粗略的面完了招商银行 唉） 感觉特定挂了 问了好多Java的东西 我直接人麻了</p><p>问了不少 springboot的 东西 直接废了</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>先写个博客</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每日一水 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
             
         </tags>
       
