@@ -6,7 +6,7 @@
   <link href="https://graham-ella.github.io/atom.xml" rel="self"/>
   
   <link href="https://graham-ella.github.io/"/>
-  <updated>2022-06-20T13:20:15.866Z</updated>
+  <updated>2022-06-23T15:32:18.051Z</updated>
   <id>https://graham-ella.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>22-06-23</title>
+    <link href="https://graham-ella.github.io/2022/06/23/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/22-06-23/"/>
+    <id>https://graham-ella.github.io/2022/06/23/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/22-06-23/</id>
+    <published>2022-06-23T08:00:00.000Z</published>
+    <updated>2022-06-23T15:32:18.051Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-1-tcp-x2F-ip协议族体系结构"><a href="#1-1-tcp-x2F-ip协议族体系结构" class="headerlink" title="1.1 tcp&#x2F;ip协议族体系结构"></a>1.1 tcp&#x2F;ip协议族体系结构</h2><h3 id="1-1-1-数据链路层"><a href="#1-1-1-数据链路层" class="headerlink" title="1.1.1 数据链路层"></a>1.1.1 数据链路层</h3><p>整个体系结构就是下层为上层提供服务，要想使用数据链路层的功能就要有数据链路层里用的MAC地址，MAC地址可以通过ARP协议通过IP地址得到,<br>另外还有RARP协议,RARP就是反过来，通过MAC地址获得IP地址，主要用于无盘的机器，就是不能存储自己的IP地址，但是可以通过自己的MAC来查询</p><h3 id="1-1-2-网络层"><a href="#1-1-2-网络层" class="headerlink" title="1.1.2 网络层"></a>1.1.2 网络层</h3><p>网络层最经典的就是IP协议，IP协议其实就是封装了网络的拓扑结构，传输层上仿佛两个机器的直接通信，其实是网络层通过路由选择，一跳一跳的选择下一跳地址，<br>来将两个主机连接起来，<br>还有ICMP协议，ICMP协议借用了IP协议的服务<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623210040.png" alt="ICMP报文字段"></p><h3 id="1-1-3-传输层"><a href="#1-1-3-传输层" class="headerlink" title="1.1.3 传输层"></a>1.1.3 传输层</h3><p>传输层经典的TCP协议(传输控制协议)，TCP协议是可靠的，基于字节流传输的，发送端可以逐个向数据流里写入，接收端可以逐个读出；<br>UDP(用户数据报协议)是不可靠的，基于数据报，每个数据报都有一个长度，接收端只能以该长度读出；<br>SCTP协议(流控制传输协议)： 在因特网传输电话信号</p><h3 id="1-1-4-应用层"><a href="#1-1-4-应用层" class="headerlink" title="1.1.4 应用层"></a>1.1.4 应用层</h3><p>应用层在用户空间实现，传输层以下都是在内核空间实现，如果也在内核，可以省去来回切换的麻烦，但是导致内核庞大、实现复杂，<br>比如</p><ul><li>ping</li><li>telnet 远程登陆协议</li><li>DNS</li><li>OSPF 开放最短路径优先 动态路由更新协议</li></ul><p>可以在&#x2F;etc&#x2F;services里查看</p><h2 id="1-2-封装"><a href="#1-2-封装" class="headerlink" title="1.2 封装"></a>1.2 封装</h2><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623211424.png" alt="封装过程图"></p><p>当发送端应用程序使用send(write)向一个TCP连接写入数据时，内核中的TCP模块会将这些数据复制到与该连接对应的TCP内核发送缓冲区，然后TCP模块<br>调用IP模块提供的服务，传递的参数包括TCP头部信息和TCP发送缓冲区中的数据<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623211654.png" alt="TCP封装过程"></p><p>经过UDP封装后的数据称为UDP数据报，UDP无须为应用层数据保存副本，因为它提供的服务是不可靠的。<br>当一个UDP数据报被成功发送之后，UDP内核缓冲区中的该数据报就被丢弃了。<br>如果应用程序检测到该数据报未能被接收端正确接收，并打算重发这个数据报，则应用程序需要重新从用户空间将该数据报拷贝到UDP内核发送缓冲区中。<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623212107.png" alt="帧结构"></p><h2 id="1-3-分用"><a href="#1-3-分用" class="headerlink" title="1.3 分用"></a>1.3 分用</h2><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623214321.png" alt="分用"><br>因为IP协议、ARP协议和RARP协议都使用帧传输数据，所以帧的头部需要提供某个<br>字段（具体情况取决于帧的类型）来区分它们。以以太网帧为例，它使用2字节的类型字段<br>来标识上层协议（见图1-6）。如果主机接收到的以太网帧类型字段的值为0x800,则帧的数<br>据部分为P数据报（见图1-4），以太网驱动程序就将帧交付给IP模块：若类型字段的值为<br>0x806,则帧的数据部分为ARP请求或应答报文，以太网驱动程序就将帧交付给ARP模块：<br>若类型字段的值为0x835,则帧的数据部分为RARP请求或应答报文，以太网驱动程序就将<br>帧交付给RARP模块。</p><h2 id="1-5-arp协议工作原理"><a href="#1-5-arp协议工作原理" class="headerlink" title="1.5 arp协议工作原理"></a>1.5 arp协议工作原理</h2><p>工作原理：主机向自己所在的网络广播一个ARP请求，该请求包含目标机器的网络地址。此网络上的其它机器接收这个请求后，目标机器会响应一个APR应答，<br>包含自己的MAC地址</p><p>arp高速缓存: 存储常用的和最近使用的一些MAC和IP的关系<br>arp -a可以查询</p><h2 id="1-6-DNS工作原理"><a href="#1-6-DNS工作原理" class="headerlink" title="1.6 DNS工作原理"></a>1.6 DNS工作原理</h2><p>linux下可以利用host指令 利用dns协议和dns服务器进行通讯<br>比如:<br>host -t A <a href="http://www.baidu.com/">www.baidu.com</a> (-t表示选择哪种查询类型 A表示域名和IP的对应)<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220623231514.png" alt="host指令"></p><h2 id="1-7-socket与TCP-x2F-IP协议族的关系"><a href="#1-7-socket与TCP-x2F-IP协议族的关系" class="headerlink" title="1.7 socket与TCP&#x2F;IP协议族的关系"></a>1.7 socket与TCP&#x2F;IP协议族的关系</h2><p>数据链路层、网络层、传输层都是在内核实现的，操作系统就需要提供系统调用来使得应用程序可以使用这些协议提供的服务，<br>实现这组系统调用的API主要是socket</p><p>socket主要的功能在于:</p><ul><li>将应用程序数据从用户缓冲区复制到TCP&#x2F;UDP内核发送缓冲区，用来交付内核来发送数据；将TCP&#x2F;UDP接收缓冲区中的数据复制到用户缓冲区来读取数据</li><li>应用程序通过他们可以修改这些底层协议的某些头部信息或其它数据结构，来精细的控制底层通信的行为</li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-1-tcp-x2F-ip协议族体系结构&quot;&gt;&lt;a href=&quot;#1-1-tcp-x2F-ip协议族体系结构&quot; class=&quot;headerlink&quot; title=&quot;1.1 tcp&amp;#x2F;ip协议族体系结构&quot;&gt;&lt;/a&gt;1.1 tcp&amp;#x2F;ip协议族体系结构</summary>
+      
+    
+    
+    
+    <category term="Linux高性能服务器阅读" scheme="https://graham-ella.github.io/categories/Linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%85%E8%AF%BB/"/>
+    
+    
+    <category term="阅读" scheme="https://graham-ella.github.io/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>0620刷题</title>
@@ -212,6 +236,30 @@
   </entry>
   
   <entry>
+    <title>2022-05-11</title>
+    <link href="https://graham-ella.github.io/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/"/>
+    <id>https://graham-ella.github.io/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/</id>
+    <published>2022-05-11T08:00:00.000Z</published>
+    <updated>2022-05-11T11:00:42.645Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>8:30左右醒来，昨晚三点多才睡（热爆了），半夜下床找风扇结果还没找着，又灰溜溜的回床睡了，貌似是时间已经够晚了，<br>后来也成功入睡了</p><p>可怕）想起了去年暑假的悲惨时光</p><p>早上看了会儿？emmmm 好家伙 好像早上没看啥 看了会儿C++的东西 然后睡了会儿 实在太困了</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>和架构师请了个假，毕竟下午有4399的面试</p><p>感觉4399的面试 emmmm 发挥还算可以的样子 应该不会被挂吧） 唉</p><p>面完了4：20左右，结果接到电话？ 招商银行的电话？？？ —- 发现自己记错面试时间了</p><p>5：30 粗略的面完了招商银行 唉） 感觉特定挂了 问了好多Java的东西 我直接人麻了</p><p>问了不少 springboot的 东西 直接废了</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>先写个博客</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;早上&quot;&gt;&lt;a href=&quot;#早上&quot; class=&quot;headerlink&quot; title=&quot;早上&quot;&gt;&lt;/a&gt;早上&lt;/h2&gt;&lt;p&gt;8:30左右醒来，昨晚三点多才睡（热爆了），半夜下床找风扇结果还没找着，又灰溜溜的回床睡了，貌似是时间已经够晚了，&lt;br&gt;后来也成功入睡了&lt;</summary>
+      
+    
+    
+    
+    <category term="每日一水" scheme="https://graham-ella.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/"/>
+    
+    
+    <category term="日记" scheme="https://graham-ella.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>4399和招商银行</title>
     <link href="https://graham-ella.github.io/2022/05/11/2022%E6%9A%91%E6%9C%9F%E9%9D%A2%E8%AF%95/4399%E5%92%8C%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/"/>
     <id>https://graham-ella.github.io/2022/05/11/2022%E6%9A%91%E6%9C%9F%E9%9D%A2%E8%AF%95/4399%E5%92%8C%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/</id>
@@ -234,30 +282,6 @@
     
     
     <category term="暑期实习 面试" scheme="https://graham-ella.github.io/tags/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022-05-11</title>
-    <link href="https://graham-ella.github.io/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/"/>
-    <id>https://graham-ella.github.io/2022/05/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-11/</id>
-    <published>2022-05-11T08:00:00.000Z</published>
-    <updated>2022-05-11T11:00:42.645Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>8:30左右醒来，昨晚三点多才睡（热爆了），半夜下床找风扇结果还没找着，又灰溜溜的回床睡了，貌似是时间已经够晚了，<br>后来也成功入睡了</p><p>可怕）想起了去年暑假的悲惨时光</p><p>早上看了会儿？emmmm 好家伙 好像早上没看啥 看了会儿C++的东西 然后睡了会儿 实在太困了</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>和架构师请了个假，毕竟下午有4399的面试</p><p>感觉4399的面试 emmmm 发挥还算可以的样子 应该不会被挂吧） 唉</p><p>面完了4：20左右，结果接到电话？ 招商银行的电话？？？ —- 发现自己记错面试时间了</p><p>5：30 粗略的面完了招商银行 唉） 感觉特定挂了 问了好多Java的东西 我直接人麻了</p><p>问了不少 springboot的 东西 直接废了</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>先写个博客</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;早上&quot;&gt;&lt;a href=&quot;#早上&quot; class=&quot;headerlink&quot; title=&quot;早上&quot;&gt;&lt;/a&gt;早上&lt;/h2&gt;&lt;p&gt;8:30左右醒来，昨晚三点多才睡（热爆了），半夜下床找风扇结果还没找着，又灰溜溜的回床睡了，貌似是时间已经够晚了，&lt;br&gt;后来也成功入睡了&lt;</summary>
-      
-    
-    
-    
-    <category term="每日一水" scheme="https://graham-ella.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/"/>
-    
-    
-    <category term="日记" scheme="https://graham-ella.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
