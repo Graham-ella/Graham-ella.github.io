@@ -6,7 +6,7 @@
   <link href="https://graham-ella.github.io/atom.xml" rel="self"/>
   
   <link href="https://graham-ella.github.io/"/>
-  <updated>2022-06-23T16:41:46.749Z</updated>
+  <updated>2022-06-24T06:05:16.377Z</updated>
   <id>https://graham-ella.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://graham-ella.github.io/2022/06/24/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-24/"/>
     <id>https://graham-ella.github.io/2022/06/24/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-24/</id>
     <published>2022-06-24T08:00:00.000Z</published>
-    <updated>2022-06-23T16:41:46.749Z</updated>
+    <updated>2022-06-24T06:05:16.377Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="第二章-ip协议详解"><a href="#第二章-ip协议详解" class="headerlink" title="第二章 ip协议详解"></a>第二章 ip协议详解</h2><h3 id="2-1-IP服务的特点"><a href="#2-1-IP服务的特点" class="headerlink" title="2.1 IP服务的特点"></a>2.1 IP服务的特点</h3><ul><li>IP协议是无状态的，通信双方不长久的维护双方的信息</li><li>不可靠: 不能保证IP数据包可以准确的到达接收端，中转路由器和接收端都有可能因为某些原因抛弃数据包，然后返回ICMP错误消息</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="第二章-ip协议详解"><a href="#第二章-ip协议详解" class="headerlink" title="第二章 ip协议详解"></a>第二章 ip协议详解</h2><h3 id="2-1-IP服务的特点"><a href="#2-1-IP服务的特点" class="headerlink" title="2.1 IP服务的特点"></a>2.1 IP服务的特点</h3><ul><li>IP协议是无状态的，通信双方不长久的维护双方的信息</li><li>不可靠: 不能保证IP数据包可以准确的到达接收端，中转路由器和接收端都有可能因为某些原因抛弃数据包，然后返回ICMP错误消息</li></ul><h3 id="2-2-ipv4头部结构"><a href="#2-2-ipv4头部结构" class="headerlink" title="2.2 ipv4头部结构"></a>2.2 ipv4头部结构</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624111910.png" alt="ipv4头部"><br>注意:</p><ul><li>头部长度的单位是4字节 因此头部最大为60字节</li><li>8位服务类型：3位是优先段字段（已废弃）、4位TOS字段（最小延时、最大吞吐量、最高可靠性、最小费用）</li><li>16位总长度指的是整个IP数据报的长度</li><li>16位标识唯一标识主机发送的每个数据包，初始值随机生成，注意一个数据包的所有分片都具有相同的标识</li><li>13位片偏移:分片相对原始IP数据报开始处的（仅仅指数据部分）的偏移，实际偏移值要乘以8</li><li>8位协议是用来区分上层的协议，&#x2F;etc&#x2F;protocols可以查看数值 TCP是6 UDP是17 ICMP是1</li><li>可变长的可选信息：头部固定大小有20字节，最大头部是60字节，因此可选最大是40字节（作用是可以记录下自己经过的路由器IP、时间戳之类的东西）</li></ul><h3 id="2-3-ip分片"><a href="#2-3-ip分片" class="headerlink" title="2.3 ip分片"></a>2.3 ip分片</h3><p>其实就是受限于MTU，如果MTU是1500字节，意味着整个IP数据包的长度就是1500字节，由于固定的首部大小为20字节，理论上能传输的最大有效数据也就是1480字节，<br>不够只能选择分片</p><h3 id="2-4-ip路由"><a href="#2-4-ip路由" class="headerlink" title="2.4 ip路由"></a>2.4 ip路由</h3><p>略</p><h3 id="2-5-ip转发"><a href="#2-5-ip转发" class="headerlink" title="2.5 ip转发"></a>2.5 ip转发</h3><p>主机一般负责发送和接收数据报，因为主机上 &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward的内核参数默认被设置为0，我们可以通过修改它来使能主机的数据报转发功能<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624123954.png"></p><h3 id="2-6-重定向"><a href="#2-6-重定向" class="headerlink" title="2.6 重定向"></a>2.6 重定向</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624124313.png"></p><h3 id="2-7-ipv6头部结构"><a href="#2-7-ipv6头部结构" class="headerlink" title="2.7 ipv6头部结构"></a>2.7 ipv6头部结构</h3><p>ipv6的作用:(16个字节 128位)</p><ul><li>解决了ipv4地址不够用的问题</li><li>增加了多播和流的功能，为网络上多媒体内容的质量提供了精细的控制</li><li>引入自动配置功能，使得局域网管理更方便</li><li>增加了专门的网络安全功能</li></ul><p>ipv6地址用”:”这样的表示方法，而且可以省略连续的、全零的组，称为零压缩法，但是零压缩法<br>对一个ipv6地址只能使用一次，用”::”表示省略</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624140501.png" alt="ipv6扩展头部"></p>]]></content>
     
     
       
