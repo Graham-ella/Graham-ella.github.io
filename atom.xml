@@ -41,6 +41,30 @@
   </entry>
   
   <entry>
+    <title>22-06-26</title>
+    <link href="https://graham-ella.github.io/2022/06/26/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-26/"/>
+    <id>https://graham-ella.github.io/2022/06/26/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-26/</id>
+    <published>2022-06-26T08:00:00.000Z</published>
+    <updated>2022-06-26T15:21:01.532Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="第三章-TCP协议详解"><a href="#第三章-TCP协议详解" class="headerlink" title="第三章 TCP协议详解"></a>第三章 TCP协议详解</h2><h3 id="3-4-TCP状态转移"><a href="#3-4-TCP状态转移" class="headerlink" title="3.4 TCP状态转移"></a>3.4 TCP状态转移</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220626230259.png" alt="TCP状态转移图"></p><h4 id="典型服务器端的状态转移过程："><a href="#典型服务器端的状态转移过程：" class="headerlink" title="典型服务器端的状态转移过程："></a>典型服务器端的状态转移过程：</h4><p>服务器通过listen系统调用进入<b>LISTEN状态</b>，被动等待客户端连接，执行的是所谓的被动打开，服务器一旦监听到某个连接请求，就将该连接放入内核等待队列中，并<br>向客户端发送带SYN标志的确认报文段，此时该连接处于了<b>SYN_RCVD状态</b>。如果服务器成功接收到客户端发来的确认报文，该连接转移到<b>ESTABLISHED状态</b>。ESTABLISHED状态是连接双方能够进行双向数据传输的状态。</p><p>当客户端主动关闭连接时（通过close或者shutdown系统调用发送结束报文段），服务器通过返回确认报文段使连接进入<b>CLOSE_WAIT状态</b>，等待服务器应用程序关闭连<br>接。通常服务器检测到客户端关闭连接后，也会立即给客户端发送一个结束报文段来关闭连接。这将使连接转移到<b>LAST_ACK状态</b>，以等待客户端对结束报文段的最后一次确认。一旦确认完成，连接关闭。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;第三章-TCP协议详解&quot;&gt;&lt;a href=&quot;#第三章-TCP协议详解&quot; class=&quot;headerlink&quot; title=&quot;第三章 TCP协议详解&quot;&gt;&lt;/a&gt;第三章 TCP协议详解&lt;/h2&gt;&lt;h3 id=&quot;3-4-TCP状态转移&quot;&gt;&lt;a href=&quot;#3-4-TC</summary>
+      
+    
+    
+    
+    <category term="Linux高性能服务器阅读" scheme="https://graham-ella.github.io/categories/Linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%98%85%E8%AF%BB/"/>
+    
+    
+    <category term="阅读" scheme="https://graham-ella.github.io/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>0624题目</title>
     <link href="https://graham-ella.github.io/2022/06/24/acw%E9%A2%98%E7%9B%AE/0624%E9%A2%98%E7%9B%AE/"/>
     <id>https://graham-ella.github.io/2022/06/24/acw%E9%A2%98%E7%9B%AE/0624%E9%A2%98%E7%9B%AE/</id>
@@ -69,9 +93,9 @@
     <link href="https://graham-ella.github.io/2022/06/24/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-24/"/>
     <id>https://graham-ella.github.io/2022/06/24/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-24/</id>
     <published>2022-06-24T08:00:00.000Z</published>
-    <updated>2022-06-24T14:55:31.504Z</updated>
+    <updated>2022-06-26T14:58:32.212Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="第二章-ip协议详解"><a href="#第二章-ip协议详解" class="headerlink" title="第二章 ip协议详解"></a>第二章 ip协议详解</h2><h3 id="2-1-IP服务的特点"><a href="#2-1-IP服务的特点" class="headerlink" title="2.1 IP服务的特点"></a>2.1 IP服务的特点</h3><ul><li>IP协议是无状态的，通信双方不长久的维护双方的信息</li><li>不可靠: 不能保证IP数据包可以准确的到达接收端，中转路由器和接收端都有可能因为某些原因抛弃数据包，然后返回ICMP错误消息</li></ul><h3 id="2-2-ipv4头部结构"><a href="#2-2-ipv4头部结构" class="headerlink" title="2.2 ipv4头部结构"></a>2.2 ipv4头部结构</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624111910.png" alt="ipv4头部"><br>注意:</p><ul><li>头部长度的单位是4字节 因此头部最大为60字节</li><li>8位服务类型：3位是优先段字段（已废弃）、4位TOS字段（最小延时、最大吞吐量、最高可靠性、最小费用）</li><li>16位总长度指的是整个IP数据报的长度</li><li>16位标识唯一标识主机发送的每个数据包，初始值随机生成，注意一个数据包的所有分片都具有相同的标识</li><li>13位片偏移:分片相对原始IP数据报开始处的（仅仅指数据部分）的偏移，实际偏移值要乘以8</li><li>8位协议是用来区分上层的协议，&#x2F;etc&#x2F;protocols可以查看数值 TCP是6 UDP是17 ICMP是1</li><li>可变长的可选信息：头部固定大小有20字节，最大头部是60字节，因此可选最大是40字节（作用是可以记录下自己经过的路由器IP、时间戳之类的东西）</li></ul><h3 id="2-3-ip分片"><a href="#2-3-ip分片" class="headerlink" title="2.3 ip分片"></a>2.3 ip分片</h3><p>其实就是受限于MTU，如果MTU是1500字节，意味着整个IP数据包的长度就是1500字节，由于固定的首部大小为20字节，理论上能传输的最大有效数据也就是1480字节，<br>不够只能选择分片</p><h3 id="2-4-ip路由"><a href="#2-4-ip路由" class="headerlink" title="2.4 ip路由"></a>2.4 ip路由</h3><p>略</p><h3 id="2-5-ip转发"><a href="#2-5-ip转发" class="headerlink" title="2.5 ip转发"></a>2.5 ip转发</h3><p>主机一般负责发送和接收数据报，因为主机上 &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward的内核参数默认被设置为0，我们可以通过修改它来使能主机的数据报转发功能<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624123954.png"></p><h3 id="2-6-重定向"><a href="#2-6-重定向" class="headerlink" title="2.6 重定向"></a>2.6 重定向</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624124313.png"></p><h3 id="2-7-ipv6头部结构"><a href="#2-7-ipv6头部结构" class="headerlink" title="2.7 ipv6头部结构"></a>2.7 ipv6头部结构</h3><p>ipv6的作用:(16个字节 128位)</p><ul><li>解决了ipv4地址不够用的问题</li><li>增加了多播和流的功能，为网络上多媒体内容的质量提供了精细的控制</li><li>引入自动配置功能，使得局域网管理更方便</li><li>增加了专门的网络安全功能</li></ul><p>ipv6地址用”:”这样的表示方法，而且可以省略连续的、全零的组，称为零压缩法，但是零压缩法<br>对一个ipv6地址只能使用一次，用”::”表示省略</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624140501.png" alt="ipv6扩展头部"></p><h2 id="第三章-TCP协议详解"><a href="#第三章-TCP协议详解" class="headerlink" title="第三章 TCP协议详解"></a>第三章 TCP协议详解</h2><h3 id="3-1-TCP服务的特点"><a href="#3-1-TCP服务的特点" class="headerlink" title="3.1 TCP服务的特点"></a>3.1 TCP服务的特点</h3><p>TCP协议的连接是一对一的，基于广播和多播的应用程序不能使用TCP服务，UDP协议更加适合；<br>TCP是字节流服务的，意味着TCP模块发出的TCP报文段的个数和应用程序执行的写操作次数之间没有固定的数量关系，<br>应用程序执行的读操作次数和TCP模块接收到的TCP报文段个数之间也没有固定的关系。<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624143728.png" alt="字节流服务和数据报服务"></p><h3 id="3-2-TCP头部结构"><a href="#3-2-TCP头部结构" class="headerlink" title="3.2 TCP头部结构"></a>3.2 TCP头部结构</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624143937.png" alt="TCP头部"></p><ul><li>端口号：进行TCP通信的时候，客户端通常使用系统自动临时选择的端口号，而服务器端使用知名服务端口号，可以通过&#x2F;etc&#x2F;services来查询;</li><li>16位窗口大小：TCP流量控制的手段，RWND（接收通告窗口），告诉TCP接收缓冲区还能容纳多少字节的数据，这样就可以控制发送的速度</li></ul><p><img src="/../../../linkpages/TCP%E6%89%A9%E5%B1%95%E5%AD%97%E6%AE%B5.png" alt="TCP扩展字段"></p><h3 id="3-3-TCP连接的建立和关闭"><a href="#3-3-TCP连接的建立和关闭" class="headerlink" title="3.3 TCP连接的建立和关闭"></a>3.3 TCP连接的建立和关闭</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624212303.png" alt="TCP连接建立和关闭示意图"></p><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p>三次握手建立连接的第一个TCP报文段包含SYN标志，它是一个同步报文段，第二个也是，同步报文段特殊的地方在于虽然它不携带应用程序的数据，<br>它也要占用一个序号值，<br>因此，如果A和B建立连接，A一开始的序列号seq &#x3D; x，B返回的ack就是x + 1，代表下一次它想要x+1, B返回的序列号如果是y，那么第三次握手<br>A的ack应该是y + 1</p><h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p>四次挥手这里想的是第二次挥手有无作用，实际上它仅仅是一个确认目的，是可以省略的，因为第三次挥手也携带了确认信息，是否需要它取决于<br>TCP的延迟确认特性</p><h4 id="连接建立和断开总结"><a href="#连接建立和断开总结" class="headerlink" title="连接建立和断开总结"></a>连接建立和断开总结</h4><p>一般来说，TCP连接是由客户端发起的，通过三次握手建立连接，TCP连接关闭的过程相对复杂，可能是客户端主动执行关闭，可能是服务器执行主动关闭（服务程序中断强行关闭程序），也可能是同时关闭</p><h4 id="半关闭状态"><a href="#半关闭状态" class="headerlink" title="半关闭状态"></a>半关闭状态</h4><p>TCP连接是全双工的，支持两个方向的通信的数据传输独立关闭，此时称为半关闭状态<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624225033.png" alt="半关闭状态"><br>相当于客户端已经结束了自己这边数据的传输，但是仍旧可以接收服务器端发来的东西，上图中双方判断对方已经关闭了连接的方法是看read系统调用是否返回0</p><h4 id="连接超时"><a href="#连接超时" class="headerlink" title="连接超时"></a>连接超时</h4><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624225400.png" alt="连接超时"><br>每次超时，超时时间加倍，由内核变量tcp_syn_retries决定，5次连接都失败的情况下，TCP模块放弃连接通知应用程序</p><h3 id="TCP状态转移"><a href="#TCP状态转移" class="headerlink" title="TCP状态转移"></a>TCP状态转移</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="第二章-ip协议详解"><a href="#第二章-ip协议详解" class="headerlink" title="第二章 ip协议详解"></a>第二章 ip协议详解</h2><h3 id="2-1-IP服务的特点"><a href="#2-1-IP服务的特点" class="headerlink" title="2.1 IP服务的特点"></a>2.1 IP服务的特点</h3><ul><li>IP协议是无状态的，通信双方不长久的维护双方的信息</li><li>不可靠: 不能保证IP数据包可以准确的到达接收端，中转路由器和接收端都有可能因为某些原因抛弃数据包，然后返回ICMP错误消息</li></ul><h3 id="2-2-ipv4头部结构"><a href="#2-2-ipv4头部结构" class="headerlink" title="2.2 ipv4头部结构"></a>2.2 ipv4头部结构</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624111910.png" alt="ipv4头部"><br>注意:</p><ul><li>头部长度的单位是4字节 因此头部最大为60字节</li><li>8位服务类型：3位是优先段字段（已废弃）、4位TOS字段（最小延时、最大吞吐量、最高可靠性、最小费用）</li><li>16位总长度指的是整个IP数据报的长度</li><li>16位标识唯一标识主机发送的每个数据包，初始值随机生成，注意一个数据包的所有分片都具有相同的标识</li><li>13位片偏移:分片相对原始IP数据报开始处的（仅仅指数据部分）的偏移，实际偏移值要乘以8</li><li>8位协议是用来区分上层的协议，&#x2F;etc&#x2F;protocols可以查看数值 TCP是6 UDP是17 ICMP是1</li><li>可变长的可选信息：头部固定大小有20字节，最大头部是60字节，因此可选最大是40字节（作用是可以记录下自己经过的路由器IP、时间戳之类的东西）</li></ul><h3 id="2-3-ip分片"><a href="#2-3-ip分片" class="headerlink" title="2.3 ip分片"></a>2.3 ip分片</h3><p>其实就是受限于MTU，如果MTU是1500字节，意味着整个IP数据包的长度就是1500字节，由于固定的首部大小为20字节，理论上能传输的最大有效数据也就是1480字节，<br>不够只能选择分片</p><h3 id="2-4-ip路由"><a href="#2-4-ip路由" class="headerlink" title="2.4 ip路由"></a>2.4 ip路由</h3><p>略</p><h3 id="2-5-ip转发"><a href="#2-5-ip转发" class="headerlink" title="2.5 ip转发"></a>2.5 ip转发</h3><p>主机一般负责发送和接收数据报，因为主机上 &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward的内核参数默认被设置为0，我们可以通过修改它来使能主机的数据报转发功能<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624123954.png"></p><h3 id="2-6-重定向"><a href="#2-6-重定向" class="headerlink" title="2.6 重定向"></a>2.6 重定向</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624124313.png"></p><h3 id="2-7-ipv6头部结构"><a href="#2-7-ipv6头部结构" class="headerlink" title="2.7 ipv6头部结构"></a>2.7 ipv6头部结构</h3><p>ipv6的作用:(16个字节 128位)</p><ul><li>解决了ipv4地址不够用的问题</li><li>增加了多播和流的功能，为网络上多媒体内容的质量提供了精细的控制</li><li>引入自动配置功能，使得局域网管理更方便</li><li>增加了专门的网络安全功能</li></ul><p>ipv6地址用”:”这样的表示方法，而且可以省略连续的、全零的组，称为零压缩法，但是零压缩法<br>对一个ipv6地址只能使用一次，用”::”表示省略</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624140501.png" alt="ipv6扩展头部"></p><h2 id="第三章-TCP协议详解"><a href="#第三章-TCP协议详解" class="headerlink" title="第三章 TCP协议详解"></a>第三章 TCP协议详解</h2><h3 id="3-1-TCP服务的特点"><a href="#3-1-TCP服务的特点" class="headerlink" title="3.1 TCP服务的特点"></a>3.1 TCP服务的特点</h3><p>TCP协议的连接是一对一的，基于广播和多播的应用程序不能使用TCP服务，UDP协议更加适合；<br>TCP是字节流服务的，意味着TCP模块发出的TCP报文段的个数和应用程序执行的写操作次数之间没有固定的数量关系，<br>应用程序执行的读操作次数和TCP模块接收到的TCP报文段个数之间也没有固定的关系。<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624143728.png" alt="字节流服务和数据报服务"></p><h3 id="3-2-TCP头部结构"><a href="#3-2-TCP头部结构" class="headerlink" title="3.2 TCP头部结构"></a>3.2 TCP头部结构</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624143937.png" alt="TCP头部"></p><ul><li>端口号：进行TCP通信的时候，客户端通常使用系统自动临时选择的端口号，而服务器端使用知名服务端口号，可以通过&#x2F;etc&#x2F;services来查询;</li><li>16位窗口大小：TCP流量控制的手段，RWND（接收通告窗口），告诉TCP接收缓冲区还能容纳多少字节的数据，这样就可以控制发送的速度</li></ul><p><img src="/../../../linkpages/TCP%E6%89%A9%E5%B1%95%E5%AD%97%E6%AE%B5.png" alt="TCP扩展字段"></p><h3 id="3-3-TCP连接的建立和关闭"><a href="#3-3-TCP连接的建立和关闭" class="headerlink" title="3.3 TCP连接的建立和关闭"></a>3.3 TCP连接的建立和关闭</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624212303.png" alt="TCP连接建立和关闭示意图"></p><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p>三次握手建立连接的第一个TCP报文段包含SYN标志，它是一个同步报文段，第二个也是，同步报文段特殊的地方在于虽然它不携带应用程序的数据，<br>它也要占用一个序号值，<br>因此，如果A和B建立连接，A一开始的序列号seq &#x3D; x，B返回的ack就是x + 1，代表下一次它想要x+1, B返回的序列号如果是y，那么第三次握手<br>A的ack应该是y + 1</p><h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p>四次挥手这里想的是第二次挥手有无作用，实际上它仅仅是一个确认目的，是可以省略的，因为第三次挥手也携带了确认信息，是否需要它取决于<br>TCP的延迟确认特性</p><h4 id="连接建立和断开总结"><a href="#连接建立和断开总结" class="headerlink" title="连接建立和断开总结"></a>连接建立和断开总结</h4><p>一般来说，TCP连接是由客户端发起的，通过三次握手建立连接，TCP连接关闭的过程相对复杂，可能是客户端主动执行关闭，可能是服务器执行主动关闭（服务程序中断强行关闭程序），也可能是同时关闭</p><h4 id="半关闭状态"><a href="#半关闭状态" class="headerlink" title="半关闭状态"></a>半关闭状态</h4><p>TCP连接是全双工的，支持两个方向的通信的数据传输独立关闭，此时称为半关闭状态<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624225033.png" alt="半关闭状态"><br>相当于客户端已经结束了自己这边数据的传输，但是仍旧可以接收服务器端发来的东西，上图中双方判断对方已经关闭了连接的方法是看read系统调用是否返回0</p><h4 id="连接超时"><a href="#连接超时" class="headerlink" title="连接超时"></a>连接超时</h4><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220624225400.png" alt="连接超时"><br>每次超时，超时时间加倍，由内核变量tcp_syn_retries决定，5次连接都失败的情况下，TCP模块放弃连接通知应用程序</p><h3 id="3-4-TCP状态转移"><a href="#3-4-TCP状态转移" class="headerlink" title="3.4 TCP状态转移"></a>3.4 TCP状态转移</h3>]]></content>
     
     
       
@@ -466,23 +490,6 @@
     
     
     <summary type="html">butterfly主题 简单配置过程</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>评论系统搭建</title>
-    <link href="https://graham-ella.github.io/2022/05/07/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/"/>
-    <id>https://graham-ella.github.io/2022/05/07/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</id>
-    <published>2022-05-07T08:00:00.000Z</published>
-    <updated>2022-05-09T09:40:31.693Z</updated>
-    
-    <content type="html"><![CDATA[<p>有个图床真的舒服，随时随地爽</p><p>看了看别人的博客，感觉Twikoo和Valine都挺好看的 打算干脆直接搞个双评论系统)</p><h2>先配置下Valine吧</h2>首先打开LeanCloud官网 <a>https://console.leancloud.app/#/app</a> 选择国际版<p>注册后完善下信息 选择创建应用<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220507210426.png"></p><p>打开创建的应用 进行一些简单的配置</p><p>在设置的应用凭证里获取AppID Appkey等信息，写到_config.yml文件里<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220507211945.png"></p><p>重新启动，发现评论区有了</p><p>测试一下Toc功能</p><h2 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h2><p>sd</p><h3 id="heooo"><a href="#heooo" class="headerlink" title="heooo"></a>heooo</h3>]]></content>
-    
-    
-    <summary type="html">评论系统搭建过程</summary>
     
     
     
