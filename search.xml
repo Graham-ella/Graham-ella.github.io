@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>22-06-27</title>
+      <link href="/2022/06/27/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-27/"/>
+      <url>/2022/06/27/%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B/22-06-27/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第三章-TCP协议详解"><a href="#第三章-TCP协议详解" class="headerlink" title="第三章 TCP协议详解"></a>第三章 TCP协议详解</h2><h3 id="3-4-TCP状态转移"><a href="#3-4-TCP状态转移" class="headerlink" title="3.4 TCP状态转移"></a>3.4 TCP状态转移</h3><h4 id="典型客户端的状态转移过程"><a href="#典型客户端的状态转移过程" class="headerlink" title="典型客户端的状态转移过程"></a>典型客户端的状态转移过程</h4><p>客户端通过connect系统调用主动与服务器建立连接，connect系统调用首先给服务器发送一个同步报文段，使得<br>连接转移到<b>SYN_SENT状态</b>。</p><p>connect系统调用可能因为如下两个原因失败：</p><ul><li>连接的目标端口不存在，或者被处于<b>TIME_WAIT状态</b>的连接占用，此时服务器将给客户端发送一个复位报文段，connect调用失败</li><li>目标端口存在，但connect在超时时间内未收到服务器的确认报文段，connect调用失败<br>如果connect调用失败，连接会返回初始的<b>CLOSED状态</b>，如果成功，连接转移到<b>ESTABLISHED状态</b></li></ul><p>客户端执行主动关闭时，它向服务器发送一个FIN，同时连接进入FIN_WAIT_1状态，如果收到了服务器的ACK，连接进入FIN_WAIT_2状态，此时服务器是出于CLOSE_WAIT状态，这一对状态是半关闭的状态，如果收到服务器的FIN，ACK（其实主要是FIN），客户端发送ACK后进入TIME_WAIT状态。</p><p>如果想要直接从FIN_WAIT_1进入到TIME_WAIT状态，需要客户端直接收到带有确认信息的FIN报文段，不能写收到确认报文段，再收到FIN结束报文段。</p><p>处于FIN_WAIT_2状态的客户端需要等待服务器的FIN的报文段，才能转移到TIME_WAIT状态，连续停留在FIN_WAIT_2状态的情况可能发生在：客户端执行半关闭后，未等服务器关闭连接就强行推出了，此时的客户端连接由内核接管，这种称为<b>孤儿连接</b>。Linux为了防止孤儿连接长时间存留在内核中，定义了两个内核变量：</p><ul><li>&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;tcp_max_orphans 内核能接管的孤儿连接数量</li><li>&#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;tcp_fin_timeout 孤儿连接在内核的存活时间</li></ul><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/origin_img_v2_63c5be98-e239-4941-9b9d-38ec212c04ag.jpg" alt="状态示意图"></p><h4 id="time-wait状态"><a href="#time-wait状态" class="headerlink" title="time_wait状态"></a>time_wait状态</h4><p>如上图所示，客户端收到服务器的FIN后进入了TIME_WAIT状态，客户端连接要等待2MSL的时间才能完全关闭。<br>这状态存在的原因有：</p><ul><li>可靠的中止TCP连接<br>如果客户端最后回复的ACK丢失了，服务器会重发FIN，客户端需要停留在某个状态重新发ACK</li><li>保证让迟来的TCP报文有足够的时间被识别和丢弃<br>当一个TCP连接处于TIME_WAIT状态，我们无法用它的端口来建立一个新连接，如果不存在TIME_WAIT状态，则应用程序能够立即建立一个和刚关闭的连接相似的连接，那么这个新的<br>连接可能会受到网络中旧的报文段，这样就可以清干净网络</li></ul><p>如下图所示，可能出现端口被占用的情况<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220627152651.png" alt="立刻重启"></p><p>不过，一般来说客户端的端口号一般是系统临时分配的自动端口号，但是如果是服务器主动关闭连接，因为它对于一些知名服务都是用的同一些端口号，TIME_WAIT状态会让他不能立即重启，我们可以通过socket选项SO_REUSEADDR来强制进程使用被TIME_WAIT连接占用的端口号</p><h3 id="3-5-复位报文段"><a href="#3-5-复位报文段" class="headerlink" title="3.5 复位报文段"></a>3.5 复位报文段</h3><p>复位报文段：携带RST标志，通知对方关闭连接或者重新建立连接。</p><h4 id="端口问题"><a href="#端口问题" class="headerlink" title="端口问题"></a>端口问题</h4><p>尝试连接到端口不存在或者该端口仍然被处于TIME_WAIT状态的连接所占用，这里的端口指的是服务器端口</p><h4 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h4><p>TCP提供了异常中止连接的方法：给对方发送一个复位报文段，发送端所有排队等待发送的数据会被丢弃，<br>可以使用socket的SO_LINGER来发送复位报文段</p><h4 id="处理半打开连接"><a href="#处理半打开连接" class="headerlink" title="处理半打开连接"></a>处理半打开连接</h4><p>什么是半打开连接？ 客户端：C 服务器端：S<br>如果S中途异常中止了连接，此时C没有收到S的FIN，还会维持之前的连接，此时对于C来说这个连接就处于半打开状态</p><p>其实这里就是说，在上面的场景中，如果S重新投入工作，C还给S发送数据的话，S就会返回带RST标识的报文段</p><h3 id="3-6-3-7-TCP数据流"><a href="#3-6-3-7-TCP数据流" class="headerlink" title="3.6-3.7 TCP数据流"></a>3.6-3.7 TCP数据流</h3><p>TCP数据流主要分成两种：交互数据流和成块数据流，前者携带的字节数少，对实时性要求比较高，后者携带数据多，对传输效率要求高</p><h4 id="交互数据流"><a href="#交互数据流" class="headerlink" title="交互数据流"></a>交互数据流</h4><p>延迟确认：不立刻发送ACK，等自己有数据要发了，一起发过去，这样有效减少发送的TCP报文段数量</p><p>由于这些交互用的TCP报文段携带的数据很少，因此引入了Nagle算法<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220627213032.png" alt="Nagle算法"></p><h4 id="成块数据流"><a href="#成块数据流" class="headerlink" title="成块数据流"></a>成块数据流</h4><p>当传输大量数据时，发送方可以一次性发送多个报文段，接收方可以一次确认多个，<br>发送方通过ack中的<b>接收窗口大小</b>和<b>窗口扩大因子</b>计算接收方缓冲区的容量来判断自己还能发多少</p><h3 id="3-8-带外数据"><a href="#3-8-带外数据" class="headerlink" title="3.8 带外数据"></a>3.8 带外数据</h3><p>带外数据就是需要紧急发出去的数据，UDP不支持，TCP通过标志位来实现（头部的紧急指针标志和紧急指针）</p><h3 id="3-9-TCP超时重传"><a href="#3-9-TCP超时重传" class="headerlink" title="3.9 TCP超时重传"></a>3.9 TCP超时重传</h3><p>重传其实就是你发送一个报文段，结果很久都没有收到ACK，你在发送的时候会设置一个定时器，一旦超时了你就重传，并且重置这个定时器，至于说你重传几次，下一次的超时时间设定都是你重传策略自己设置的</p><p>前者指定在底层IP接管之前TCP最少执行的重传次数，默认是3；后者指定连接放弃前TCP最多可以执行的重传次数，默认值是15；</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220627215607.png" alt="超时重传参数查看"></p><h3 id="3-10-拥塞控制"><a href="#3-10-拥塞控制" class="headerlink" title="3.10 拥塞控制"></a>3.10 拥塞控制</h3><p>非常简单，其实就是你发送的数据大小是由接收窗口的RWND和发送窗口的最小值来决定的，发送窗口的大小是由拥塞控制算法来控制，至于慢启动、拥塞避免、快速重传、快速恢复之前已经整理过了，这里不多解释了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux高性能服务器阅读 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 阅读 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode第81场双周赛</title>
       <link href="/2022/06/26/leetcode%E5%91%A8%E8%B5%9B/leetcode%E7%AC%AC81%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/"/>
       <url>/2022/06/26/leetcode%E5%91%A8%E8%B5%9B/leetcode%E7%AC%AC81%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/</url>
@@ -404,31 +429,6 @@
     
     
     <entry>
-      <title>2022-05-10</title>
-      <link href="/2022/05/10/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-10/"/>
-      <url>/2022/05/10/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-10/</url>
-      
-        <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>一觉醒来8点半，吃了个早饭，9电多到了诚意，奴了把上周末的周赛，写到了10：50，准备水个博客</p><p>是不是该学编译原理了？</p><p>想到下午某源的课我就头疼，摊上这种老师真是倒了血霉了</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>看了会儿编译原理，终于看到P21了，还有3&#x2F;4没看，是不是要无了？<br>LL(1)文法感觉有点妙啊<br>这个什么FIRST集和FOLLOW集感觉有点不太熟练）还是摸的多了</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>打了会儿球到9电多，投了两家公司的建立，在牛客网上又骚扰了几家公司<br>所以什么时候会开奖呢？<br>求华为和海康爆捞我</p><p>华泰啥时候能出一面结果啊）难受啊~~~~~~~~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 每日一水 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>leetcode第292场周赛</title>
       <link href="/2022/05/10/leetcode%E5%91%A8%E8%B5%9B/leetcode%E7%AC%AC292%E5%9C%BA%E5%91%A8%E8%B5%9B/"/>
       <url>/2022/05/10/leetcode%E5%91%A8%E8%B5%9B/leetcode%E7%AC%AC292%E5%9C%BA%E5%91%A8%E8%B5%9B/</url>
@@ -446,6 +446,31 @@
         <tags>
             
             <tag> lc周赛 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2022-05-10</title>
+      <link href="/2022/05/10/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-10/"/>
+      <url>/2022/05/10/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-10/</url>
+      
+        <content type="html"><![CDATA[<h2 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h2><p>一觉醒来8点半，吃了个早饭，9电多到了诚意，奴了把上周末的周赛，写到了10：50，准备水个博客</p><p>是不是该学编译原理了？</p><p>想到下午某源的课我就头疼，摊上这种老师真是倒了血霉了</p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>看了会儿编译原理，终于看到P21了，还有3&#x2F;4没看，是不是要无了？<br>LL(1)文法感觉有点妙啊<br>这个什么FIRST集和FOLLOW集感觉有点不太熟练）还是摸的多了</p><h2 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h2><p>打了会儿球到9电多，投了两家公司的建立，在牛客网上又骚扰了几家公司<br>所以什么时候会开奖呢？<br>求华为和海康爆捞我</p><p>华泰啥时候能出一面结果啊）难受啊~~~~~~~~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每日一水 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
             
         </tags>
       
