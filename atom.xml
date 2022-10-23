@@ -6,7 +6,7 @@
   <link href="https://graham-ella.github.io/atom.xml" rel="self"/>
   
   <link href="https://graham-ella.github.io/"/>
-  <updated>2022-10-22T12:54:02.933Z</updated>
+  <updated>2022-10-23T08:52:35.505Z</updated>
   <id>https://graham-ella.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>环境搭建</title>
+    <link href="https://graham-ella.github.io/2022/10/23/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>https://graham-ella.github.io/2022/10/23/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
+    <published>2022-10-23T08:00:00.000Z</published>
+    <updated>2022-10-23T08:52:35.505Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考教程：</p><ul><li><p><a href="https://blog.csdn.net/weixin_42658887/article/details/112094547">https://blog.csdn.net/weixin_42658887&#x2F;article&#x2F;details&#x2F;112094547</a></p></li><li><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华的anaconda源</a></p></li></ul><h1 id="安装anaconda"><a href="#安装anaconda" class="headerlink" title="安装anaconda"></a>安装anaconda</h1><p>发现很多年前好像就安装过了，虽然以前一直也没用过</p><h1 id="anaconda安装pytorch包"><a href="#anaconda安装pytorch包" class="headerlink" title="anaconda安装pytorch包"></a>anaconda安装pytorch包</h1><p>先根据博客里说的换源，如下图所示<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023005051.png" alt=".condarc文件"></p><p>然后创建pytorch环境，并且激活<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023005225.png" alt="创建pytorch环境"></p><br/><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio cudatoolkit=11.3</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023013107.png" alt="执行命令后报错"></p><p>怀疑是清华源不找不到一些包，重新恢复了condarc文件</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023013522.png" alt="速度十分感人"></p><p>歇逼歇逼，已经1：35了，电脑放在这跑了</p><p>现在是2022-10-23，凌晨的时候一直报错，直接睡觉了，第二天醒来加了几条配置，跑了很久（不知道为啥），但是幸好没出问题的样子</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023114202.png" alt="done"></p><p>蚌埠住了，搞到现在被搞好cuda，放弃————–</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参考教程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_42658887/article/details/112094547&quot;&gt;https://blog.csdn.net/weixin_42658887&amp;#x2</summary>
+      
+    
+    
+    
+    <category term="动动手学深度学习" scheme="https://graham-ella.github.io/categories/%E5%8A%A8%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="深度学习" scheme="https://graham-ella.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>2022-10-22</title>
@@ -476,32 +502,6 @@
     
     
     <category term="日记" scheme="https://graham-ella.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>4399和招商银行</title>
-    <link href="https://graham-ella.github.io/2022/05/11/2022%E6%9A%91%E6%9C%9F%E9%9D%A2%E8%AF%95/4399%E5%92%8C%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/"/>
-    <id>https://graham-ella.github.io/2022/05/11/2022%E6%9A%91%E6%9C%9F%E9%9D%A2%E8%AF%95/4399%E5%92%8C%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C/</id>
-    <published>2022-05-11T08:00:00.000Z</published>
-    <updated>2022-05-11T11:57:04.667Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="4399面试"><a href="#4399面试" class="headerlink" title="4399面试"></a>4399面试</h2><p>介绍一下你自己–</p><p>介绍一下自己的项目</p><p>又又又选择了说自己的CSAPP实验　这门课真是学的绝了</p><p>大小端判断、浮点数的存储— 没反应</p><p>动态内存分配器 问了问分配内存时候 最佳匹配和第一次匹配（还是啥）的优点和缺点<br>大概说了说最佳匹配性能弱点，第一次匹配可能会导致内存碎片之类的</p><p>提到 拆炸弹的Lab 提到一嘴反汇编 问了问ELF格式的文件结构<br>说了说 文件头、data段、text段、rodata段、bss段、注释段、堆栈信息段之类的<br>问了问常量字符串在哪个段？(rodata) 未初始化的全局变量或者静态变量在哪里（data、bss段之类的）</p><p>问了问http代理服务器那个项目<br>说了句一个进程在跑，如果遇到一个请求，就直接开个线程去处理（精准踩雷）</p><p>问了问 线程A打开一个文件，线程B可以再打开吗（当然可以）<br>如果已知地址，线程A可以访问B的栈吗？（可以的吧　不确定）<br>线程的空间资源主要用在哪里？（线程id、栈、程序计数器之类的）</p><p>然后问我是否知道IO多路复用之类的？<br>回答了select的东西（不敢回答 epoll poll 怕直接被问爆）</p><p>面试内容大概就问了这么多》》 感觉效果还可以 不知道能不能过？</p><p>然后就是问了问为啥投游戏公司、问啥不考研、平时的学习方法啥的——</p><p>反问：面试官主要做的啥方面</p><h2 id="招商银行"><a href="#招商银行" class="headerlink" title="招商银行"></a>招商银行</h2><p>直接一个大写的寄</p><p>为啥我投的服务器开发，问的都是些Java的东西 人直接麻了</p><p>不过问的倒是挺简单的，可惜完全没准备过</p><p>自我介绍提到Java 直接开始问爆</p><p>让我介绍下自己写的Java项目 说了商品管理系统）我直接人麻了</p><p>问我遇到了什么问题）我一个小小前后端能有啥问题<br>只能胡扯说遇到了同步异步的问题，好家伙直接问我怎么解决的，支支吾吾说在前端定义了两个函数的前后关系，<br>让它从异步转同步，然后又继续追问怎么转的？？ 我直接好家伙 只能说用什么async 还是 sync什么关键字（不了解）搞的<br>对面竟然点了点头 貌似他也用过？</p><p>然后得知了我用过spring boot 直接问我Controller层用了什么注解？ 寄啦 我咋记得代码嘛—</p><p>当场尴尬– 感觉这个面试官被我搞懵了（ps:有两个面试官）</p><p>然后问我熟不熟悉linux 我直接好家伙 直呼知道常用指令</p><p>问我查看CPU使用情况用啥情况？ 好家伙完全不会 只记得好像top可以 顺嘴提了 ps aux<br>结果直接问我ps aux输出啥 回答忘了（艹 不该胡乱说话）</p><p>网上搜了搜 貌似可能是想让我回答 vmstat<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220511194618.png" alt="linux查看CPU使用"></p><p>后来提到我的项目是跑在本地还是哪儿？</p><p>想起以前大一搞过部署到云服务器，结果问我jar包怎么打包出来的？</p><p>我直呼 idea直接点出来的 又问我哪里点的？ 我怎么可能记得 ） 大寄</p><p>然后问我jar包怎么传到服务器 有没有种可能想让我回答 scp指令 结果我回答直接拖拽 艹 乐死我了</p><p>直接xftp传</p><p>这把可真是尴尬爆表，这个面试官可能意识到了我有多垃圾，所以选择了沉默，另一个面试官上了）</p><p>问了手：“你说你熟悉计算机网络，谈谈序列号的作用”</p><p>好家伙，我直呼序列号可以帮你确认分组，确认ack发什么？ 他好像说我说了大半） 并不了解还让我说啥<br>序列号难道不就是数据包最初始数据的那个号码嘛）</p><p>中途倒是谈到了ICMP协议，稍微吹了会儿水 感觉发挥可以</p><p>感觉这把招商银行是面的凉了，本来还想去的呢） </p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;4399面试&quot;&gt;&lt;a href=&quot;#4399面试&quot; class=&quot;headerlink&quot; title=&quot;4399面试&quot;&gt;&lt;/a&gt;4399面试&lt;/h2&gt;&lt;p&gt;介绍一下你自己–&lt;/p&gt;
-&lt;p&gt;介绍一下自己的项目&lt;/p&gt;
-&lt;p&gt;又又又选择了说自己的CSAPP实验　这门课</summary>
-      
-    
-    
-    
-    <category term="面试" scheme="https://graham-ella.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-    <category term="暑期实习 面试" scheme="https://graham-ella.github.io/tags/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   

@@ -495,6 +495,11 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollToTop: () => { // Back to top
       btf.scrollToDest(0, 500)
     },
+
+    scrollToBottom: () => { // Back to bottom
+      btf.scrollToBottom()
+    },
+  
     hideAsideBtn: () => { // Hide aside
       const $htmlDom = document.documentElement.classList
       $htmlDom.contains('hide-aside')
