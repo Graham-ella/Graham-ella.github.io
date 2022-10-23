@@ -6,7 +6,7 @@
   <link href="https://graham-ella.github.io/atom.xml" rel="self"/>
   
   <link href="https://graham-ella.github.io/"/>
-  <updated>2022-10-23T08:52:35.505Z</updated>
+  <updated>2022-10-23T08:55:18.823Z</updated>
   <id>https://graham-ella.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://graham-ella.github.io/2022/10/23/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>https://graham-ella.github.io/2022/10/23/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
     <published>2022-10-23T08:00:00.000Z</published>
-    <updated>2022-10-23T08:52:35.505Z</updated>
+    <updated>2022-10-23T08:55:18.823Z</updated>
     
-    <content type="html"><![CDATA[<p>参考教程：</p><ul><li><p><a href="https://blog.csdn.net/weixin_42658887/article/details/112094547">https://blog.csdn.net/weixin_42658887&#x2F;article&#x2F;details&#x2F;112094547</a></p></li><li><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华的anaconda源</a></p></li></ul><h1 id="安装anaconda"><a href="#安装anaconda" class="headerlink" title="安装anaconda"></a>安装anaconda</h1><p>发现很多年前好像就安装过了，虽然以前一直也没用过</p><h1 id="anaconda安装pytorch包"><a href="#anaconda安装pytorch包" class="headerlink" title="anaconda安装pytorch包"></a>anaconda安装pytorch包</h1><p>先根据博客里说的换源，如下图所示<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023005051.png" alt=".condarc文件"></p><p>然后创建pytorch环境，并且激活<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023005225.png" alt="创建pytorch环境"></p><br/><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio cudatoolkit=11.3</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023013107.png" alt="执行命令后报错"></p><p>怀疑是清华源不找不到一些包，重新恢复了condarc文件</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023013522.png" alt="速度十分感人"></p><p>歇逼歇逼，已经1：35了，电脑放在这跑了</p><p>现在是2022-10-23，凌晨的时候一直报错，直接睡觉了，第二天醒来加了几条配置，跑了很久（不知道为啥），但是幸好没出问题的样子</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023114202.png" alt="done"></p><p>蚌埠住了，搞到现在被搞好cuda，放弃————–</p>]]></content>
+    <content type="html"><![CDATA[<p>参考教程：</p><ul><li><p><a href="https://blog.csdn.net/weixin_42658887/article/details/112094547">https://blog.csdn.net/weixin_42658887&#x2F;article&#x2F;details&#x2F;112094547</a></p></li><li><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华的anaconda源</a></p></li></ul><h1 id="安装anaconda"><a href="#安装anaconda" class="headerlink" title="安装anaconda"></a>安装anaconda</h1><p>发现很多年前好像就安装过了，虽然以前一直也没用过</p><h1 id="anaconda安装pytorch包"><a href="#anaconda安装pytorch包" class="headerlink" title="anaconda安装pytorch包"></a>anaconda安装pytorch包</h1><p>先根据博客里说的换源，如下图所示<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023005051.png" alt=".condarc文件"></p><p>然后创建pytorch环境，并且激活<br><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023005225.png" alt="创建pytorch环境"></p><br/><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio cudatoolkit=11.3</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023013107.png" alt="执行命令后报错"></p><p>怀疑是清华源不找不到一些包，重新恢复了condarc文件</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023013522.png" alt="速度十分感人"></p><p>歇逼歇逼，已经1：35了，电脑放在这跑了</p><p>现在是2022-10-23，凌晨的时候一直报错，直接睡觉了，第二天醒来加了几条配置，跑了很久（不知道为啥），但是幸好没出问题的样子</p><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20221023114202.png" alt="done"></p><p>2022.10.23 16:55 蚌埠住了，搞到现在没搞好cuda，放弃————–</p>]]></content>
     
     
       
