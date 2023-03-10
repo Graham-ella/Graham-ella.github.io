@@ -6,7 +6,7 @@
   <link href="https://graham-ella.github.io/atom.xml" rel="self"/>
   
   <link href="https://graham-ella.github.io/"/>
-  <updated>2022-12-13T13:05:48.802Z</updated>
+  <updated>2023-03-10T13:43:49.090Z</updated>
   <id>https://graham-ella.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年3月10日</title>
+    <link href="https://graham-ella.github.io/2023/03/10/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2023-03-10/"/>
+    <id>https://graham-ella.github.io/2023/03/10/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2023-03-10/</id>
+    <published>2023-03-10T08:00:00.000Z</published>
+    <updated>2023-03-10T13:43:49.090Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="acw3555-二叉树"><a href="#acw3555-二叉树" class="headerlink" title="acw3555. 二叉树"></a>acw3555. 二叉树</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m; <span class="comment">// n个节点 m次询问</span></span><br><span class="line"><span class="type">int</span> l[N], r[N], p[N];</span><br><span class="line"><span class="type">int</span> dist[N]; <span class="comment">// 记录每个节点到根节点的路径长度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> dis)</span></span>&#123;</span><br><span class="line">    dist[index] = dis;</span><br><span class="line">    <span class="keyword">if</span>(l[index] != <span class="number">-1</span>) <span class="built_in">dfs</span>(l[index], dis+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(r[index] != <span class="number">-1</span>) <span class="built_in">dfs</span>(r[index], dis+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求a和b的最近公共祖先序号 爬山法</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">LCA</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(dist[a] &gt; dist[b]) <span class="built_in">swap</span>(a, b);</span><br><span class="line">    <span class="keyword">while</span>(dist[a] &lt; dist[b]) b = p[b];</span><br><span class="line">    <span class="keyword">while</span>(a != <span class="number">1</span> &amp;&amp; b != <span class="number">1</span> &amp;&amp; a != b) a = p[a], b = p[b];</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="built_in">memset</span>(l, <span class="number">-1</span>, <span class="built_in">sizeof</span>(l));</span><br><span class="line">        <span class="built_in">memset</span>(r, <span class="number">-1</span>, <span class="built_in">sizeof</span>(r));</span><br><span class="line">        <span class="built_in">memset</span>(p, <span class="number">-1</span>, <span class="built_in">sizeof</span>(p));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="type">int</span> a, b;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">            l[i] = a;</span><br><span class="line">            r[i] = b;</span><br><span class="line">            <span class="keyword">if</span>(a != <span class="number">-1</span>) p[a] = i;</span><br><span class="line">            <span class="keyword">if</span>(b != <span class="number">-1</span>) p[b] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">dfs</span>(<span class="number">1</span>, <span class="number">0</span>); <span class="comment">// 得到dist数组</span></span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">            <span class="type">int</span> a, b;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">            <span class="type">int</span> lca = <span class="built_in">LCA</span>(a, b);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, dist[a] + dist[b] - <span class="number">2</span>*dist[lca]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;acw3555-二叉树&quot;&gt;&lt;a href=&quot;#acw3555-二叉树&quot; class=&quot;headerlink&quot; title=&quot;acw3555. 二叉树&quot;&gt;&lt;/a&gt;acw3555. 二叉树&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;tabl</summary>
+      
+    
+    
+    
+    <category term="每日一水" scheme="https://graham-ella.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/"/>
+    
+    
+    <category term="题目" scheme="https://graham-ella.github.io/tags/%E9%A2%98%E7%9B%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode第323场周赛</title>
@@ -477,30 +501,6 @@
     
     
     <category term="日记" scheme="https://graham-ella.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>招商银行笔试</title>
-    <link href="https://graham-ella.github.io/2022/05/13/2022%E6%9A%91%E6%9C%9F%E7%AC%94%E8%AF%95/%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C%E7%AC%94%E8%AF%95/"/>
-    <id>https://graham-ella.github.io/2022/05/13/2022%E6%9A%91%E6%9C%9F%E7%AC%94%E8%AF%95/%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C%E7%AC%94%E8%AF%95/</id>
-    <published>2022-05-13T08:00:00.000Z</published>
-    <updated>2022-05-13T15:03:25.339Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h2><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220513220918.png" alt="树的节点"></p><h3 id="rm指令"><a href="#rm指令" class="headerlink" title="rm指令"></a>rm指令</h3><ul><li>rm -i 删除前逐一询问确认</li><li>rm -f 即使原档案属性设为唯读，亦直接删除，无需逐一确认</li><li>rm -r 将目录及以下之档案亦逐一删除<br>(好像没有题目中的 rm -d选项)</li></ul><h3 id="数据库的隔离性"><a href="#数据库的隔离性" class="headerlink" title="数据库的隔离性"></a>数据库的隔离性</h3><p>并发访问数据库时，一个用户的事务不被其它事务所干扰，各并发事务之间数据库是独立的<br>（原子性和持久性都是基于单个事务内部的措施，而隔离性是多个事务之间相互隔离、互不影响的特性）</p><p>事务的四个隔离级别：</p><ol><li>READ-UNCOMMITTED(读未提交)<br> 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读</li><li>READ-COMMITTED(读已提交)<br> 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读和不可重复读仍有可能发生</li><li>REPEATABLE-READ(可重复读)<br> 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但是幻读仍有可能发生</li><li>SERIALIZABLE(可串行化)<br> 最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，该级别可以防止脏读、不可重复读以及幻读。</li></ol><p>Mysql 默认采用的 <b>可重复读隔离级别</b> ，Oracle 默认采用的<b>读已提交隔离级别</b><br>InnoDB 存储引擎在 分布式事务 的情况下一般会用到可串行化隔离级别。</p><h3 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h3><p><img src="https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/20220513230019.png" alt="L0、L1、L2范数"></p><h3 id="xss类型"><a href="#xss类型" class="headerlink" title="xss类型"></a>xss类型</h3><ul><li>反射型XSS</li><li>DOM-based型XXS</li><li>存储型XSS（持久型XSS）</li></ul><p>反射型 XSS 一般是攻击者通过特定手法（如电子邮件），诱使用户去访问一个包含恶意代码的 URL，当受害者点击这些专门设计的链接的时候，恶意代码会直接在受害者主机上的浏览器执行。反射型XSS通常出现在网站的搜索栏、用户登录口等地方，常用来窃取客户端 Cookies 或进行钓鱼欺骗。</p><p>久型XSS，主要将XSS代码提交存储在服务器端（数据库，内存，文件系统等），下次请求目标页面时不用再提交XSS代码。当目标用户访问该页面获取数据时，XSS代码会从服务器解析之后加载出来，返回到浏览器做正常的HTML和JS解析执行，XSS攻击就发生了。存储型 XSS 一般出现在网站留言、评论、博客日志等交互处，恶意脚本存储到客户端或者服务端的数据库中。</p><p>基于 DOM 的 XSS 攻击是指通过恶意脚本修改页面的 DOM 结构，是纯粹发生在客户端的攻击。DOM 型 XSS 攻击中，取出和执行恶意代码由浏览器端完成，属于前端 JavaScript 自身的安全漏洞。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;选择题&quot;&gt;&lt;a href=&quot;#选择题&quot; class=&quot;headerlink&quot; title=&quot;选择题&quot;&gt;&lt;/a&gt;选择题&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/Graham-ella/picgo/img/202205</summary>
-      
-    
-    
-    
-    <category term="笔试" scheme="https://graham-ella.github.io/categories/%E7%AC%94%E8%AF%95/"/>
-    
-    
-    <category term="暑期实习 笔试" scheme="https://graham-ella.github.io/tags/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95/"/>
     
   </entry>
   
