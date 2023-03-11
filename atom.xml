@@ -6,7 +6,7 @@
   <link href="https://graham-ella.github.io/atom.xml" rel="self"/>
   
   <link href="https://graham-ella.github.io/"/>
-  <updated>2023-03-10T13:43:49.090Z</updated>
+  <updated>2023-03-11T02:07:52.970Z</updated>
   <id>https://graham-ella.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年3月11日</title>
+    <link href="https://graham-ella.github.io/2023/03/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2023-03-11/"/>
+    <id>https://graham-ella.github.io/2023/03/11/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2023-03-11/</id>
+    <published>2023-03-11T08:00:00.000Z</published>
+    <updated>2023-03-11T02:07:52.970Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="acw1394-完美牛棚"><a href="#acw1394-完美牛棚" class="headerlink" title="acw1394. 完美牛棚"></a>acw1394. 完美牛棚</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匈牙利算法</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;istream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">210</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">bool</span> g[N][N], st[N];</span><br><span class="line"><span class="type">int</span> match[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i] &amp;&amp; g[x][i])&#123;</span><br><span class="line">            st[i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(!match[i] || <span class="built_in">find</span>(match[i]))&#123;</span><br><span class="line">                match[i] = x;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="type">int</span> cnt;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;cnt);</span><br><span class="line">        <span class="keyword">while</span>(cnt--)&#123;</span><br><span class="line">            <span class="type">int</span> x;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;x);</span><br><span class="line">            g[i][x] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>(i)) res++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="acw861-二分图的最大匹配"><a href="#acw861-二分图的最大匹配" class="headerlink" title="acw861. 二分图的最大匹配"></a>acw861. 二分图的最大匹配</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">510</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> g[N][N], st[N]; <span class="comment">// st标记妹子是否被预定了</span></span><br><span class="line"><span class="type">int</span> match[N]; <span class="comment">// 标记妹子匹配到了哪个男的</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n1, n2, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>; j &lt;= n2; j++)&#123;</span><br><span class="line">        <span class="comment">// 这个妹子还未被预定</span></span><br><span class="line">        <span class="keyword">if</span>(!st[j] &amp;&amp; g[x][j])&#123;</span><br><span class="line">            st[j] = <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">// 这个妹子还没匹配或者匹配的男的可以换个人</span></span><br><span class="line">            <span class="keyword">if</span>(!match[j] || <span class="built_in">find</span>(match[j]))&#123;</span><br><span class="line">                match[j] = x;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n1, &amp;n2, &amp;m);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">       <span class="type">int</span> a, b;</span><br><span class="line">       <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">       g[a][b] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n1; i++)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>(i)) res++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;acw1394-完美牛棚&quot;&gt;&lt;a href=&quot;#acw1394-完美牛棚&quot; class=&quot;headerlink&quot; title=&quot;acw1394. 完美牛棚&quot;&gt;&lt;/a&gt;acw1394. 完美牛棚&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="每日一水" scheme="https://graham-ella.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/"/>
+    
+    
+    <category term="题目" scheme="https://graham-ella.github.io/tags/%E9%A2%98%E7%9B%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>2023年3月10日</title>
@@ -476,31 +500,6 @@
     
     
     <category term="暑期实习 笔试" scheme="https://graham-ella.github.io/tags/%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0-%E7%AC%94%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022-05-22</title>
-    <link href="https://graham-ella.github.io/2022/05/22/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-22/"/>
-    <id>https://graham-ella.github.io/2022/05/22/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/2022-05-22/</id>
-    <published>2022-05-22T08:00:00.000Z</published>
-    <updated>2022-05-22T03:55:23.174Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h2><p>昨天终于考完了编译原理和数据库，哎，感觉数据库肯定是过了，但是编译原理好像要挂了）</p><p>编译原理感觉这门课我自己都还没入门</p><p>为啥还是没有实习 —- 寄</p><p>看到个最近距离的题目 准备收录一波</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;最近&quot;&gt;&lt;a href=&quot;#最近&quot; class=&quot;headerlink&quot; title=&quot;最近&quot;&gt;&lt;/a&gt;最近&lt;/h2&gt;&lt;p&gt;昨天终于考完了编译原理和数据库，哎，感觉数据库肯定是过了，但是编译原理好像要挂了）&lt;/p&gt;
-&lt;p&gt;编译原理感觉这门课我自己都还没入门&lt;/p&gt;</summary>
-      
-    
-    
-    
-    <category term="每日一水" scheme="https://graham-ella.github.io/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E6%B0%B4/"/>
-    
-    
-    <category term="日记" scheme="https://graham-ella.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
